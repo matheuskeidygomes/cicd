@@ -42,6 +42,6 @@ jobs:
         rsync -avz --exclude='node_modules' --exclude='.git' ./ $VPS_USER@$VPS_HOST:~/home/cowlde/cicd
         
         ssh -o StrictHostKeyChecking=no $VPS_USER@$VPS_HOST << 'EOF'
-          cd ~/home/cowlde/cicd
+          cd ~/home/cowlde/cicd/dist
           npm run start
         EOF
