@@ -38,10 +38,10 @@ jobs:
         
         ssh -o StrictHostKeyChecking=no $VPS_USER@$VPS_HOST 'echo "SSH connection successful"'
         
-        rsync -avz --exclude='node_modules' --exclude='.git' ./ $VPS_USER@$VPS_HOST:~/home/cowlde/api_service
+        rsync -avz --exclude='node_modules' --exclude='.git' ./ $VPS_USER@$VPS_HOST:~/home/cowlde/cicd
         
         ssh -o StrictHostKeyChecking=no $VPS_USER@$VPS_HOST << 'EOF'
-          cd ~/home/cowlde/api_service
+          cd ~/home/cowlde/cicd
           npm install 
           npm run start:dev
         EOF
