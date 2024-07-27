@@ -21,6 +21,12 @@ jobs:
       with:
         node-version: '18' 
     
+    - name: Install dependencies
+      run: npm install
+    
+    - name: Build
+      run: npm run compile
+    
     - name: Deploy to VPS
       env:
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
@@ -37,6 +43,5 @@ jobs:
         
         ssh -o StrictHostKeyChecking=no $VPS_USER@$VPS_HOST << 'EOF'
           cd ~/home/cowlde/cicd/dist
-          npm install
           npm run start
         EOF
