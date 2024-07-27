@@ -33,6 +33,7 @@ jobs:
         VPS_HOST: ${{ secrets.VPS_HOST }}
         VPS_USER: ${{ secrets.VPS_USER }}
       run: |
+        mkdir -p ~/.ssh 
         echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
 
