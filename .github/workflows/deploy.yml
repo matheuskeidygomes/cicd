@@ -43,5 +43,5 @@ jobs:
         
         ssh -o StrictHostKeyChecking=no $VPS_USER@$VPS_HOST << 'EOF'
           cd ~/home/cowlde/cicd
-          npm run start:dev
+          npm run start
         EOF
