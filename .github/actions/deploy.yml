@@ -1,0 +1,68 @@
+name: teste.ci.cd.github.actions  # Nome do workflow que será exibido no GitHub Actions
+
+on: # Eventos que irão disparar o workflow 
+  push: # Evento de push no repositório (acionado quando um commit é enviado para o repositório)
+    branches: # Branches que irão disparar o workflow
+      - main 
+  pull_request: # Evento de pull request no repositório (acionado quando um pull request é aberto)
+    branches: 
+      - main
+
+  workflow_dispatch: # Evento de workflow manual (acionado quando o usuário clicar em "Run workflow" no GitHub Actions)
+
+jobs: # Jobs que serão executados no workflow (um ou mais jobs)
+
+  test: # Job de testes
+    runs-on: ubuntu-latest # Sistema operacional que será utilizado para executar o job
+
+    steps: # Passos que serão executados no job
+      - name: Checkout repository # Nome do passo
+        uses: actions/checkout@v2 # Ação que será utilizada no passo
+
+      - name: Set up Node.js # Nome do passo
+        uses: actions/setup-node@v2 # Ação que será utilizada no passo
+        with: # Parâmetros da ação
+          node-version: '14' # Versão do Node.js que será utilizada
+
+      - name: Install dependencies # Nome do passo
+        run: npm install # Comando que será executado no passo
+
+      - name: Run tests # Nome do passo
+        run: npm run test # Comando que será executado no passo
+
+  build: # Job de build
+    runs-on: ubuntu-latest # Sistema operacional que será utilizado para executar o job
+
+    steps: # Passos que serão executados no job
+      - name: Checkout repository # Nome do passo
+        uses: actions/checkout@v2 # Ação que será utilizada no passo
+
+      - name: Set up Node.js # Nome do passo
+        uses: actions/setup-node@v2 # Ação que será utilizada no passo
+        with: # Parâmetros da ação
+          node-version: '14' # Versão do Node.js que será utilizada
+
+      - name: Install dependencies # Nome do passo
+        run: npm install # Comando que será executado no passo
+
+      - name: Build # Nome do passo
+        run: npm run build # Comando que será executado no passo
+
+  deploy: # Job de deploy
+    runs-on: ubuntu-latest # Sistema operacional que será utilizado para executar o job
+
+    steps: # Passos que serão executados no job
+      - name: Checkout repository # Nome do passo
+        uses: actions/checkout@v2 # Ação que será utilizada no passo
+
+      - name: Set up Node.js # Nome do passo
+        uses: actions/setup-node@v2 # Ação que será utilizada no passo
+        with: # Parâmetros da ação
+          node-version: '14' # Versão do Node.js que será utilizada
+
+      - name: Install dependencies # Nome do passo
+        run: npm install # Comando que será executado no passo
+
+      - name: Deploy # Nome do passo
+        run: npm run deploy # Comando que será executado no passo
+
