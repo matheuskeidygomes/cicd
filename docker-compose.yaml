@@ -1,16 +1,35 @@
 version: "3"
 
+###################
+# PRODUCTION
+###################
+
 services:
   app:
     build:
       context: .
-      target: dev
+      target: prod
     env_file: .env
-    container_name: api_service
+    container_name: cicd
     restart: unless-stopped
-    command: npm run start:dev
     ports:
       - "3000:3000"
-    volumes:
-      - .:/app
-      - /app/node_modules
+
+###################
+# DEVELOPER
+###################
+
+# services:
+#   app:
+#     build:
+#       context: .
+#       target: devdeps
+#     env_file: .env
+#     container_name: cicd
+#     command: npm run start:dev
+#     restart: unless-stopped
+#     ports:
+#       - "3000:3000"
+#     volumes:
+#       - .:/app
+#       - /app/node_modules
